@@ -4,7 +4,7 @@ Bash script to count resources for ServiceNow Subscription Unit licenses
 Run this script in an AWS CloudShell terminal.
 
 ## Example output
-```bash
+```shell
 ./aws_resources.sh 
 Scanning region eu-west-1 ...
 AWS::EC2::Instance count =33
