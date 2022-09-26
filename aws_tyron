@@ -1,0 +1,23 @@
+#!/bin/bash
+
+let res_count=0
+
+For item r in regions.aws.list do
+
+    echo "Scanning region $r ..."
+
+    For item p in resources.aws.list do
+
+        # for available resource types: https://docs.aws.amazon.com/cli/latest/reference/configservice/list-discovered-resources.html
+
+        res=$(aws configservice list-discovered-resources --resource-type "$p" --region "$r" | grep "resourceType" | wc -l)
+
+        echo "$p count = $res"
+
+        let "res_count = $res_count + $res"
+
+    done
+
+done
+
+echo "Total number of resources is $res_count"
